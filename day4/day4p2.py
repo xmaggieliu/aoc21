@@ -12,33 +12,37 @@ bingo_in_col = []
 
 with open("input4.txt", "r") as f:
     nums = list(map(int, f.readline().split(",")))
-    f.readline() # this is blank 
-    for line in f:
-        if line != "\n":
-            line = list(map(int, line.split()))
-            card.append(line)
-            mark.append([nums.index(num) + 1 for num in line])
-            bingo_in_row.append(max(mark))
-        else:
-            cards.append(card)
-            marked.append(mark)
+    fd = f.readlines() # this is blank 
 
-            for i in range(5):
-                # i is col num, j is row num
-                bingo_col = 0
-                for j in range(5):
-                    bingo_col = max(bingo_col, mark[j][i])
-                bingo_in_col.append(bingo_col)
+fd = [list(map(int, line.split())) for line in fd]
+fd.pop(0)
+fd.append([])
 
-            first_row = min(bingo_in_row)
-            first_col = min(bingo_in_col)
+for line in fd:
+    if len(line) != 0:
+        card.append(line)
+        mark.append([nums.index(num) + 1 for num in line])
+        bingo_in_row.append(max(mark))
+    else:
+        cards.append(card)
+        marked.append(mark)
 
-            num_for_bingo.append(min(first_col, first_row))
+        for i in range(5):
+            # i is col num, j is row num
+            bingo_col = 0
+            for j in range(5):
+                bingo_col = max(bingo_col, mark[j][i])
+            bingo_in_col.append(bingo_col)
 
-            card = []
-            mark = []
-            bingo_in_row = []
-            bingo_in_col = []
+        first_row = min(bingo_in_row)
+        first_col = min(bingo_in_col)
+
+        num_for_bingo.append(min(first_col, first_row))
+
+        card = []
+        mark = []
+        bingo_in_row = []
+        bingo_in_col = []
 
 first_win = max(num_for_bingo)
 b_card = num_for_bingo.index(first_win)
