@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -25,10 +27,10 @@ int main() {
     }
     nums.push_back(stoi(full_num));
 
-    vector<vector<vector<int>>> N(100, vector<vector<int>> (5, vector<int> (5)));
-    vector<vector<vector<int>>> taken(100, vector<vector<int>>(5, vector<int>(5)));
-    vector<vector<int>> rowMax(100, vector<int>(5));
-    vector<vector<int>> colMax(100, vector<int>(5));
+    vector< vector< vector< int > > > N(100, vector< vector< int > > (5, vector< int > (5)));
+    vector< vector< vector< int > > > taken(100, vector< vector< int > >(5, vector< int >(5)));
+    vector< vector< int > > rowMax(100, vector< int >(5));
+    vector< vector< int > > colMax(100, vector< int >(5));
 
     for (int b = 0; b < 100; b++) {
         for (int i = 0; i < 5; i++) {

@@ -17,8 +17,9 @@ with open("input4.txt", "r") as f:
         if line != "\n":
             line = list(map(int, line.split()))
             card.append(line)
-            mark.append([nums.index(num) + 1 for num in line])
-            bingo_in_row.append(max(mark))
+            m = [nums.index(num) + 1 for num in line]
+            mark.append(m)
+            bingo_in_row.append(max(m))
         else:
             cards.append(card)
             marked.append(mark)

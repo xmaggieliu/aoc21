@@ -12,17 +12,20 @@ bingo_in_col = []
 
 with open("input4.txt", "r") as f:
     nums = list(map(int, f.readline().split(",")))
-    fd = f.readlines() # this is blank 
+    fd = f.readlines() 
 
 fd = [list(map(int, line.split())) for line in fd]
+# DEL empty line
 fd.pop(0)
+# add empty to the end
 fd.append([])
 
 for line in fd:
     if len(line) != 0:
         card.append(line)
-        mark.append([nums.index(num) + 1 for num in line])
-        bingo_in_row.append(max(mark))
+        m = [nums.index(num) + 1 for num in line]
+        mark.append(m)
+        bingo_in_row.append(max(m))
     else:
         cards.append(card)
         marked.append(mark)
@@ -48,8 +51,6 @@ first_win = max(num_for_bingo)
 b_card = num_for_bingo.index(first_win)
 sum_uncalled = 0
 max_called = 0
-print(num_for_bingo)
-
 
 for i in range(5):
     for j in range(5):
@@ -59,6 +60,5 @@ for i in range(5):
             max_called = cards[b_card][i][j]
 
 total_score = max_called * sum_uncalled
-print(b_card)
 print(total_score)
 
