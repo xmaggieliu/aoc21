@@ -1,6 +1,4 @@
 caves = {}
-used = []
-paths = 0
 
 with open("input.txt", "r") as f:
     for line in f:
@@ -17,7 +15,6 @@ with open("input.txt", "r") as f:
 def route(cave, used, count):
     paths = 0
     for adj in caves[cave]:
-       
         if adj == "end":
             paths += 1
             continue
